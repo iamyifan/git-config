@@ -153,4 +153,36 @@ It works the same way as `.gitignore` but will not be shown to anyone else.
 
 The rules in ```~/<.global_ignore_cfg>``` will be applied to all Git repos.
 
-   
+## SSH
+
+
+
+## Revert v.s. Reset
+
+### Revert
+
+`revert` will take a previous commit, recover the working directory based on the selected commit, and save the change in the commit log.
+
+![before commit](https://www.w3schools.com/git/img_revert_part1.gif)![after commit](https://www.w3schools.com/git/img_revert_part2.gif)
+
+- Commit by using the default `revert` message:
+
+  `git revert --no-commit/-n <commit>`
+
+- Revert a merged commit:
+
+  `git revert --/mainline/-m <parrent_num> <commit>`
+
+### Reset
+
+`reset` will take a previous commit, recover the working directory based on the selected commit, and drop all commits after the selected commit.
+
+![before reset](https://www.w3schools.com/git/img_reset_part1.gif)
+
+![after reset](https://www.w3schools.com/git/img_reset_part2.gif)
+
+- Soft reset:
+- Mixed reset
+- Hard reset
+- Merge reset
+- Keep reset

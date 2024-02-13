@@ -12,6 +12,7 @@
 - [How to upgrade Git on Mac (OSX) - Ajahne GitHub IO](https://ajahne.github.io/blog/tools/2018/06/11/how-to-upgrade-git-mac.html)
 - [Create Useful .gitignroe Files for Your Project - gitignore.io](https://www.toptal.com/developers/gitignore)
 - [Git Ignore and .gitignore - W3Schools](https://www.w3schools.com/git/git_ignore.asp?remote=github)
+- [Git reset - Atlassian](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
 
 ## Git in Homebrew
 
@@ -151,13 +152,13 @@ It works the same way as `.gitignore` but will not be shown to anyone else.
 3. Add the names/patterns of files/directories to be ignored.
 4. Save the file.
 
-The rules in ```~/<.global_ignore_cfg>``` will be applied to all Git repos.
+The ~/<.global_ignore_cfg> rules will be applied to all Git repos.
 
 ## SSH
 
 
 
-## Revert v.s. Reset
+## Git Undo
 
 ### Revert
 
@@ -171,7 +172,7 @@ The rules in ```~/<.global_ignore_cfg>``` will be applied to all Git repos.
 
 - Revert a merged commit:
 
-  `git revert --/mainline/-m <parrent_num> <commit>`
+  `git revert --mainline/-m <parrent_num> <commit>`
 
 ### Reset
 
@@ -181,8 +182,43 @@ The rules in ```~/<.global_ignore_cfg>``` will be applied to all Git repos.
 
 ![after reset](https://www.w3schools.com/git/img_reset_part2.gif)
 
-- Soft reset:
-- Mixed reset
-- Hard reset
-- Merge reset
-- Keep reset
+### Mixed (Default) Reset
+
+`git reset [--mixed]` as the default reset operation, changes the `HEAD` and `index` at the same time.
+
+Before `git reset b`:
+
+![4 nodes with "main node" being the last one](https://wac-cdn.atlassian.com/dam/jcr:8d616ece-8cee-4fde-bdee-4b280a0a8334/01%20git-sequence-transparent%20kopiera.png?cdnVersion=1439)
+
+After `git reset b`:
+
+![2 sets of 2 nodes, with head,main pointing at the 2nd of the 1st set](https://wac-cdn.atlassian.com/dam/jcr:bdf5fda3-4aac-4170-ba35-58f7a66ea3c4/03%20git-reset-transparent%20kopiera.png?cdnVersion=1439)
+
+To revert `HEAD` and `main`:
+
+1. Use `git reflog`to search for the reference
+2. Use `git reset [ref]` to move back
+
+### Checkout as a Reset Method
+
+  `git checkout` will only move the current `HEAD` to the specific position.
+
+  Before `git checkout b`:
+
+  ![4 nodes with "main node" being the last one](https://wac-cdn.atlassian.com/dam/jcr:8d616ece-8cee-4fde-bdee-4b280a0a8334/01%20git-sequence-transparent%20kopiera.png?cdnVersion=1439)
+
+  After `git checkout b`:
+
+  ![4 nodes with main pointing at last node and head pointing at 2nd node](https://wac-cdn.atlassian.com/dam/jcr:f45c4a34-8968-4c81-83cf-d55ebf01a447/02%20git-checkout-transparent%20kopiera.png?cdnVersion=1439) 
+
+A **Normal `HEAD`** points to the lastest commit of a branch; A **Detached `HEAD`** is pointing to a specific commit other than a branch. 
+
+To make changes on a detached `HEAD`: create a new branch `git checkout -b <branch_name>` before commit. 
+
+To link the detached `HEAD` to a branch: `git switch <branch_name>`.
+
+### Soft Reset vs Hard Reset vs Mixed Reset
+
+![Diagram showcasing reset modes.](https://nulab.com/static/d3d319a98c48b1ce04570d547a6b0d84/5a190/03.png)
+
+![diagram of scope of git resets](https://wac-cdn.atlassian.com/dam/jcr:7fb4b5f7-a2cd-4cb7-9a32-456202499922/03%20(8).svg?cdnVersion=1439)

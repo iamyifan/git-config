@@ -2,6 +2,10 @@
 
 # Git Note and Configurations
 
+## TO-DO
+
+- [ ] Learn Atlassian Git tutorial from the ref link
+
 ## Reference
 
 - [Git Reference - Git](https://git-scm.com/doc)
@@ -13,6 +17,7 @@
 - [Create Useful .gitignroe Files for Your Project - gitignore.io](https://www.toptal.com/developers/gitignore)
 - [Git Ignore and .gitignore - W3Schools](https://www.w3schools.com/git/git_ignore.asp?remote=github)
 - [Git reset - Atlassian](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
+- [Git Tutorials - Atlassian](https://www.atlassian.com/git/tutorials)
 
 ## Git in Homebrew
 
@@ -154,10 +159,6 @@ It works the same way as `.gitignore` but will not be shown to anyone else.
 
 The ~/<.global_ignore_cfg> rules will be applied to all Git repos.
 
-## SSH
-
-
-
 ## Git Undo
 
 ### Revert
@@ -222,3 +223,10 @@ To link the detached `HEAD` to a branch: `git switch <branch_name>`.
 ![Diagram showcasing reset modes.](https://nulab.com/static/d3d319a98c48b1ce04570d547a6b0d84/5a190/03.png)
 
 ![diagram of scope of git resets](https://wac-cdn.atlassian.com/dam/jcr:7fb4b5f7-a2cd-4cb7-9a32-456202499922/03%20(8).svg?cdnVersion=1439)
+
+## Git Amend
+
+### Modify the last commit message
+
+ `git commit --amend -m <new_message>` will modify the last commit message and keep anything else the same.
+

@@ -18,6 +18,7 @@
 - [Git Ignore and .gitignore - W3Schools](https://www.w3schools.com/git/git_ignore.asp?remote=github)
 - [Git reset - Atlassian](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
 - [Git Tutorials - Atlassian](https://www.atlassian.com/git/tutorials)
+- [Git rebase](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase)
 
 ## Git in Homebrew
 
@@ -212,7 +213,7 @@ To revert `HEAD` and `main`:
 
   ![4 nodes with main pointing at last node and head pointing at 2nd node](https://wac-cdn.atlassian.com/dam/jcr:f45c4a34-8968-4c81-83cf-d55ebf01a447/02%20git-checkout-transparent%20kopiera.png?cdnVersion=1439) 
 
-A **Normal `HEAD`** points to the lastest commit of a branch; A **Detached `HEAD`** is pointing to a specific commit other than a branch. 
+A **Normal `HEAD`** points to the latest commit of a branch; A **Detached `HEAD`** is pointing to a specific commit other than a branch. 
 
 To make changes on a detached `HEAD`: create a new branch `git checkout -b <branch_name>` before commit. 
 
@@ -230,3 +231,8 @@ To link the detached `HEAD` to a branch: `git switch <branch_name>`.
 
  `git commit --amend -m <new_message>` will modify the last commit message and keep anything else the same.
 
+## Empty Initial Commit
+
+An empty commit allows creating a commit with no changes. It can help trigger certain actions such as CI/CD, or mark one project's history/milestone without introducing actual code changes:
+
+`git commit --allow-empty -m <empty_message>`
